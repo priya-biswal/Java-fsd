@@ -1,0 +1,20 @@
+
+body{
+background-color: rgb(19, 18, 18);
+}
+p{
+    border-bottom: 3px solid skyblue;
+    border-top: 3px solid skyblue;
+    border-left: 3px dotted greenyellow;
+    border-right: 3px dotted greenyellow;
+    color:blueviolet   
+}
+h1{
+    color: aliceblue;
+}
+#box1{
+    width: 100px;
+    height:100px;
+    background-color: aliceblue;
+    box-shadow: 3px 3px 5px;
+}

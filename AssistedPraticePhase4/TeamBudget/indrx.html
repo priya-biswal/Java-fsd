@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Budget Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            background-image: url("flower1.jpg");
+            background-repeat: no-repeat;
+            background-size: 85%;
+            
+        }
+
+        h1 {
+            color: #080808;
+        }
+
+        div {
+            margin: 10px;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+
+        input, button {
+            padding: 5px;
+        }
+
+        button {
+            background-color: #007acc;
+            color: #eee7e7;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Budget Planner</h1>
+    
+    <div>
+        <label for="teamName">Team Name:</label>
+        <input type="text" id="teamName">
+    </div>
+    <div>
+        <label for="programManager">Program Manager:</label>
+        <input type="text" id="programManager">
+    </div>
+    <div>
+        <label for="expense">Enter Expenses:</label>
+        <input type="number" id="expense">
+        <button onclick="addExpense()">Add Expense</button>
+    </div>
+    <div>
+        <ul id="expenseList"></ul>
+    </div>
+    <div>
+        <button onclick="calculateBudget()">Calculate Annual Budget</button>
+    </div>
+    <div>
+        <p>Annual Budget: $<span id="annualBudget">0</span></p>
+    </div>
+
+    <script>
+        let expenses = [];
+        
+        function addExpense() {
+            const expenseInput = document.getElementById("expense");
+            const expenseValue = parseFloat(expenseInput.value);
+            
+            if (!isNaN(expenseValue)) {
+                expenses.push(expenseValue);
+                const expenseList = document.getElementById("expenseList");
+                const listItem = document.createElement("li");
+                listItem.textContent = `$${expenseValue}`;
+                expenseList.appendChild(listItem);
+                expenseInput.value = "";
+            }
+        }
+        
+        function calculateBudget() {
+            const teamName = document.getElementById("teamName").value;
+            const programManager = document.getElementById("programManager").value;
+            
+            const totalExpenses = expenses.reduce((total, expense) => total + expense, 0);
+            const budget = 100000 - totalExpenses;
+            
+            const annualBudget = document.getElementById("annualBudget");
+            annualBudget.textContent = teamName + " (" + programManager + "): $" + budget;
+        }
+    </script>
+</body>
+</html>

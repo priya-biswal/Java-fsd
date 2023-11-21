@@ -1,0 +1,38 @@
+<div class="container">
+    <nav>
+        <a href="/employees">Home</a>
+        &nbsp;&nbsp;
+        <a href="/login">Logout</a>
+      </nav>
+    <h2>Event Management App</h2>
+  
+    <!-- Add Employee Form -->
+    <div>
+      <button type="submit" class="btn btn-primary" [routerLink]="['/addEmployee']">Add New Employee</button>
+    </div>
+  
+    <hr>
+  
+    <!-- Employee List -->
+    <h3>Employee List</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" [routerLink]="['/employees', employee.id]">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
